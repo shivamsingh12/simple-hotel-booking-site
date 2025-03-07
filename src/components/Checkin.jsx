@@ -18,7 +18,7 @@ export default function Checkin() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST">
           {members.map((member) => (
-            <MemberDetails>{`Member ${member}`}</MemberDetails>
+            <MemberDetails key={member}>{`Member ${member}`}</MemberDetails>
           ))}
           <div>
             {members.length < 6 && (
