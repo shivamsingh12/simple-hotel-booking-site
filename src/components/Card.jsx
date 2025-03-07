@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 export default function Card({ name, description, ratings, reviews }) {
   return (
     <Link to={"/hotel"}>
-      <div class="flex max-w-[70%] cursor-pointer flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <div className="flex max-w-[70%] cursor-pointer flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <img
-          class="object-cover overflow-hidden w-full  h-69 md:h-[220px] md:w-69 md:rounded-none md:rounded-s-lg"
+          className="object-cover overflow-hidden w-full  h-69 md:h-[224px] md:w-69 md:rounded-none md:rounded-s-lg"
           src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
           alt=""
         />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold  text-gray-900 dark:text-white">
+        <div className="flex flex-col justify-between p-4 leading-normal">
+          <h5 className="mb-2 text-2xl font-bold  text-gray-900 dark:text-white">
             {name}
           </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {description}
           </p>
           <Ratings ratings={ratings} reviews={reviews} />

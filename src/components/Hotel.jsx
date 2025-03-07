@@ -1,5 +1,6 @@
 import ImageGrid from "./ImageGrid";
 import Ratings from "./Ratings";
+import { Link } from "react-router-dom";
 let lorem;
 
 export default function Hotel() {
@@ -10,8 +11,9 @@ export default function Hotel() {
         <div className="text-2xl font-semibold mb-3 mt-5">{"Hotel 1"}</div>
         <Ratings ratings={4.5} reviews={65} />
         <div className="mt-3">{lorem}</div>
+
         <button className="p-3 mt-4 bg-blue-500 hover:bg-blue-400 rounded-md">
-          Book Now
+          <Link to={"/booking"}>Book Now</Link>
         </button>
       </div>
     </section>

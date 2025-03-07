@@ -6,6 +6,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Explore from "./components/Explore";
 import Hotel from "./components/Hotel";
+import Booking from "./components/Booking";
+import Checkin from "./components/Checkin";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,8 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "explore", element: <Explore /> },
       { path: "hotel", element: <Hotel /> },
+      { path: "booking", element: <Booking /> },
+      { path: "checkin", element: <Checkin /> },
     ],
   },
 ]);
