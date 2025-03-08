@@ -1,6 +1,6 @@
 export default function Ratings({ ratings, reviews }) {
   return (
-    <div class="flex items-center">
+    <div className="flex items-center">
       <svg
         className="w-4 h-4 text-yellow-300 me-1"
         aria-hidden="true"

@@ -1,8 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+
 export default function Signup() {
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
+  async function loginAction(e) {
+    e.preventDefault();
+    try {
+      await axios({
+        method: "post",
+        url: "http://localhost:8000/api/users/register",
+        data: {
+          ...user,
+        },
+      });
+      toast("Sign Up Success");
+      navigate("/login");
+    } catch (e) {
+      toast("Error : " + JSON.stringify(e.response.data.message));
+    }
+  }
+
   return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-10 w-auto"
           src="https://banner2.cleanpng.com/20180825/ook/kisspng-logo-brand-product-design-trademark-logos-fake-mock-up-illust-ss143531671-2-sra-so-1713948667494.webp"
@@ -14,7 +37,7 @@ export default function Signup() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6">
           <div>
             <label
               htmlFor="name"
@@ -27,6 +50,8 @@ export default function Signup() {
                 name="name"
                 id="name"
                 required
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               />
             </div>
@@ -43,8 +68,10 @@ export default function Signup() {
                 type="email"
                 name="email"
                 id="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
+                value={user.email}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               />
             </div>
@@ -64,8 +91,10 @@ export default function Signup() {
                 type="password"
                 name="password"
                 id="password"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               />
             </div>
@@ -73,7 +102,7 @@ export default function Signup() {
 
           <div>
             <button
-              type="submit"
+              onClick={loginAction}
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Sign in

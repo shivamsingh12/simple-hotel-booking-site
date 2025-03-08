@@ -5,7 +5,7 @@ let lorem;
 
 export default function Hotel() {
   return (
-    <section class="text-white ">
+    <section className="text-white ">
       <ImageGrid />
       <div className="px-16">
         <div className="text-2xl font-semibold mb-3 mt-5">{"Hotel 1"}</div>
