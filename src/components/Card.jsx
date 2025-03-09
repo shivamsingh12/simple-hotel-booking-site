@@ -1,12 +1,13 @@
 import Ratings from "./Ratings";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Card({ name, description, ratings, reviews }) {
+export default function Card({ id, name, description, ratings, reviews }) {
   const navigate = useNavigate();
+  const hotelId = id;
   return (
     <div
       role="button"
-      onClick={() => navigate("/hotel")}
+      onClick={() => navigate(`/hotel/${hotelId}`)}
       className="flex max-w-[70%] cursor-pointer flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
       <img
@@ -23,7 +24,7 @@ export default function Card({ name, description, ratings, reviews }) {
         </p>
         <Ratings ratings={ratings} reviews={reviews} />
         <Link
-          to={"/hotel"}
+          to={`/hotel/${hotelId}`}
           className="text-white p-1 my-2 inline underline italic hover:text-blue-300"
         >
           More Details...

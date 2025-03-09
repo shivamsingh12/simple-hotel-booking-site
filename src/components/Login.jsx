@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 export default function Login() {
   const [user, setUser] = useState({});
   const { setUser: setLoggedInUser } = useContext(UserContext);
+  const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
   async function loginAction(e) {
@@ -22,7 +23,9 @@ export default function Login() {
       });
       setLoggedInUser(jwtDecode(response.data.accessToken));
       toast("Log In Success");
-      navigate("/");
+      searchParams.get("redirect")
+        ? navigate(`/${searchParams.get("redirect")}`)
+        : navigate("/");
     } catch (e) {
       toast("Error : " + JSON.stringify(e.response.data.message));
     }
